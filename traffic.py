@@ -58,7 +58,15 @@ def load_data(data_dir):
     be a list of integer labels, representing the categories for each of the
     corresponding `images`.
     """
-    raise NotImplementedError
+
+    labels = []
+    images = []
+    
+    for directory in data_dir:
+        for image in directory:
+
+            # Read image, by default has 3 channels. Red, Blue and Green.
+            img_array = cv2.imread(image)
 
 
 def get_model():
