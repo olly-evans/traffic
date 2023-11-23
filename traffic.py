@@ -62,15 +62,15 @@ def load_data(data_dir):
     labels = []
     images = []
     
-    label = 0
     for directory in data_dir:
+        directory_path = os.path.join(data_dir, directory)
+
         for image in directory:
             
             # Read image. By default has 3 channels. Red, Blue and Green.
             img_array = cv2.imread(image)
 
             resized = cv2.resize(image, (30, 30))
-        label += 1
 
 
 
