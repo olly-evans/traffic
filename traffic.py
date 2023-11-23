@@ -108,7 +108,13 @@ def get_model():
         # Flatten units.
         tf.keras.layers.Flatten(),
 
-        # Add a hidden layer with dropout.
+        # Hidden layer with 1000 neurons.
+        tf.keras.layers.Dense(1000, activation='relu'),
+        tf.keras.layers.Dropout(0.4),
+
+        # Add an output layer
+        tf.keras.layers.Dense(1, activation="softmax")
+
     )
 
     
