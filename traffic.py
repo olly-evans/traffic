@@ -59,19 +59,36 @@ def load_data(data_dir):
     corresponding `images`.
     """
 
-    labels = []
     images = []
+    labels = []
+
+    # Sort directories
+    categories = sorted(os.listdir(data_dir))
     
-    for directory in data_dir:
+    for directory in categories:
         directory_path = os.path.join(data_dir, directory)
 
+        # Check if its a directory.
+        if os.path.isdir(directory_path):
+            label = int(directory)
+
         for image in directory:
-            
+            img = os.path.join(directory_path, image)
+
             # Read image. By default has 3 channels. Red, Blue and Green.
-            img_array = cv2.imread(image)
+            img = cv2.imread(img)
 
-            resized = cv2.resize(image, (30, 30))
+            # Resize to 30x30.
+            img = cv2.resize(img, (30, 30))
 
+            images.append(img)
+            labels.append(label)
+
+    # Convert the lists to NumPy arrays
+    images = np.array(images)
+    labels = np.array(labels)
+
+    return images, labels
 
 
 
