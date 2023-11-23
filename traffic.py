@@ -79,7 +79,7 @@ def load_data(data_dir):
             img = cv2.imread(img)
 
             # Resize to 30x30.
-            img = cv2.resize(img, (30, 30))
+            img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT))
 
             images.append(img)
             labels.append(label)
@@ -89,8 +89,6 @@ def load_data(data_dir):
     labels = np.array(labels)
 
     return images, labels
-
-
 
 def get_model():
     """
